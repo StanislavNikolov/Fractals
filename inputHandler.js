@@ -1,7 +1,7 @@
 global.inputHandler.parse = function parse(codeStr)
 {
 	var output = []; // self explanatory
-	var map = {u: 0, d: 1, l: 2, r: 3, C:5}; // A dictionary holding the instruction codes
+	var map = {u:0, d:1, l:2, r:3, s:4, C:5}; // A dictionary holding the instruction codes
 
 	function getParams(startPos)
 	{
@@ -74,11 +74,12 @@ global.inputHandler.parse = function parse(codeStr)
 }
 
 
-function debug()
+function init()
 {
-	var vec = new global.common.Vector(10, 10);
-	var ins = global.inputHandler.parse("rrddlluuC{20,20,20}");
+	var vec = new global.common.Vector(10, 10); // Initial position
+	var ins = global.inputHandler.parse("rrddsuu"); // Instructions
+
 	global.simulator.turtles.push( new global.simulator.Turtle(vec, ins) );
 }
 
-debug();
+init();

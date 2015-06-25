@@ -16,14 +16,14 @@ global.simulator.Instruction = function Instruction(insId, params)
 	self.params = params;
 }
 
-global.simulator.Turtle = function Turtle(pos, code)
+global.simulator.Turtle = function Turtle(pos, code, trColor)
 {
 	var self = this;
 	self.position = pos;
 	self.code = code;
 	self.nextIns = 0;
 	self.path = [];
-	self.trColor = "blue";
+	self.trColor = trColor;
 
 	self.move = function()
 	{
@@ -49,8 +49,8 @@ global.simulator.Turtle = function Turtle(pos, code)
 				break;
 
 			case 4: // split
-				if(global.simulator.turtles.length > global.config.maxTurtles)
-					global.simulator.turtles.push(new global.simulator.Turtle(newPos , self.code));
+				if(global.simulator.turtles.length <= global.config.maxTurtles)
+					global.simulator.turtles.push(new global.simulator.Turtle(newPos , self.code, self.trColor));
 				break;
 
 			case 5: // set trace color

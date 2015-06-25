@@ -11,7 +11,7 @@ function render()
 			{
 				context.beginPath();
 
-				context.strokeStyle = currPath[idx-1].color;
+				context.strokeStyle = currPath[idx].color;
 				context.moveTo(currPath[idx-1].pos.x, currPath[idx-1].pos.y);
 				context.lineTo(currPath[idx].pos.x, currPath[idx].pos.y);
 

@@ -33,7 +33,7 @@ global.simulator.Turtle = function Turtle(pos, code)
 		switch(curr.insId)
 		{
 			case 0: // up
-				newPos.add({x: 0, y:curr.params.jumpSize});
+				newPos.add({x: 0, y:-curr.params.jumpSize});
 				break;
 
 			case 1: // down
@@ -41,7 +41,7 @@ global.simulator.Turtle = function Turtle(pos, code)
 				break;
 
 			case 2: // left
-				newPos.add({x:curr.params.jumpSize, y: 0});
+				newPos.add({x:-curr.params.jumpSize, y: 0});
 				break;
 
 			case 3: // right

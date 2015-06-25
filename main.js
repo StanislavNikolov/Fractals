@@ -8,7 +8,8 @@ global.inputHandler = {};
 global.renderer.canvas = document.getElementById("mainCanvas");
 global.renderer.context = global.renderer.canvas.getContext("2d");
 
-window.onresize = function resizeCanvas()
+window.onresize = function resizeCanvas(event)
 { 
-	console.log("Resizing canvas");	
-};
+	global.renderer.canvas.width = window.innerWidth;
+	global.renderer.canvas.height = window.innerHeight;
+}

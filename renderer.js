@@ -23,4 +23,3 @@ function render()
 }
 
 var renderInterval = setInterval(render, 1000/10);
-console.log("Asd");

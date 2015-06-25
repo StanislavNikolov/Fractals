@@ -77,9 +77,9 @@ global.inputHandler.parse = function parse(codeStr)
 function init()
 {
 	var vec = new global.common.Vector(10, 10); // Initial position
-	var ins = global.inputHandler.parse("rrddsuu"); // Instructions
+	var ins = global.inputHandler.parse("drurrC{100,100,100}sddd"); // Instructions
 
-	global.simulator.turtles.push( new global.simulator.Turtle(vec, ins) );
+	global.simulator.turtles.push( new global.simulator.Turtle(vec, ins, "blue") );
 }
 
 init();

@@ -69,10 +69,12 @@ global.simulator.Turtle = function Turtle(pos, code, trColor)
 }
 
 
-function autoSimulate()
+function simulate()
 {
 	for(var i in global.simulator.turtles)
 	{
 		global.simulator.turtles[i].move();
 	}
 }
+
+var simulateIntercval = setInterval(simulate, 1000/5);

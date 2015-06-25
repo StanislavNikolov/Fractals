@@ -1,10 +1,15 @@
 function render()
 {
+	var context = global.renderer.context;
+	context.clearRect(0, 0, global.renderer.canvas.width, global.renderer.canvas.height);
+
+	context.globalAlpha = 1;
+	context.fullStyle = "red";
+
 	for(var turt in global.simulator.turtles)
 	{
 		var currPath = global.simulator.turtles[turt].path;
 		
-		var context = global.renderer.context;
 		for(var idx in currPath)
 		{
 			if(idx > 0)
@@ -19,7 +24,10 @@ function render()
 				context.closePath();
 			}
 		}
+		
+		var turtPos = global.simulator.turtles[turt].position;
+		context.fillRect(turtPos.x, turtPos.y, 3, 3);
 	}
 }
 
-var renderInterval = setInterval(render, 1000/10);
+var renderInterval = setInterval(render, 1000/5);

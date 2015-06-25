@@ -1,6 +1,6 @@
-global.simulation.turtles = [];
+global.simulator.turtles = [];
 
-global.simulation.Trace = function(pos, color)
+global.simulator.Trace = function(pos, color)
 {
 	var self = this;
 
@@ -8,7 +8,7 @@ global.simulation.Trace = function(pos, color)
 	self.color = color;
 }
 
-global.simulation.Instruction = function Instruction(insId, params)
+global.simulator.Instruction = function Instruction(insId, params)
 {
 	var self = this;
 
@@ -16,7 +16,7 @@ global.simulation.Instruction = function Instruction(insId, params)
 	self.params = params;
 }
 
-global.simulation.Turtle = function Turtle(pos, code)
+global.simulator.Turtle = function Turtle(pos, code)
 {
 	var self = this;
 	self.position = pos;
@@ -27,29 +27,30 @@ global.simulation.Turtle = function Turtle(pos, code)
 
 	self.move = function()
 	{
-		var curr = code[nextIns];
-		var newPos = self.position;
+		var curr = code[self.nextIns];
+		var newPos = new global.common.Vector(0, 0);
+		newPos.add(self.position);
 		switch(curr.insId)
 		{
 			case 0: // up
-				newPos.add({y:curr.params.jumpSize});
+				newPos.add({x: 0, y:curr.params.jumpSize});
 				break;
 
 			case 1: // down
-				newPos.add({y:curr.params.jumpSize});
+				newPos.add({x:0, y:curr.params.jumpSize});
 				break;
 
 			case 2: // left
-				newPos.add({x:curr.params.jumpSize});
+				newPos.add({x:curr.params.jumpSize, y: 0});
 				break;
 
 			case 3: // right
-				newPos.add({x:curr.params.jumpSize});
+				newPos.add({x:curr.params.jumpSize, y: 0});
 				break;
 
 			case 4: // split
-				if(global.simulation.turtles.length > global.config.maxTurtles)
-					global.simulation.turtles.push(new global.simulation.Turtle(newPos , self.code));
+				if(global.simulator.turtles.length > global.config.maxTurtles)
+					global.simulator.turtles.push(new global.simulator.Turtle(newPos , self.code));
 				break;
 
 			case 5: // set trace color
@@ -58,20 +59,20 @@ global.simulation.Turtle = function Turtle(pos, code)
 
 		}
 
-		self.path.push(new global.simulation.Trace(newPos, self.trColor));
+		self.path.push(new global.simulator.Trace(newPos, self.trColor));
 		self.position = newPos;
 
-		nextIns ++;
-		if(nextIns >= code.length)
-			nextIns = 0;
+		self.nextIns ++;
+		if(self.nextIns >= code.length)
+			self.nextIns = 0;
 	}
 }
 
 
 function autoSimulate()
 {
-	for(var i in global.simulation.turtles)
+	for(var i in global.simulator.turtles)
 	{
-		global.simulation.turtles[i].move();
+		global.simulator.turtles[i].move();
 	}
 }

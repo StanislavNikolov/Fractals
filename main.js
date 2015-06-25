@@ -1,6 +1,9 @@
 var global = {};
 global.renderer = {};
-global.simulation = {};
+global.simulator = {};
+global.common = {};
+global.config = {maxTurtles:100};
+global.inputHandler = {};
 
 global.renderer.canvas = document.getElementById("mainCanvas");
 global.renderer.context = global.renderer.canvas.getContext("2d");

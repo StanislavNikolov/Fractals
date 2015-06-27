@@ -11,7 +11,7 @@ global.common.Vector.prototype.add = function(v)
 	this.y += v.y;
 }
 
-global.simulator.Trace = function(pos, color)
+global.common.Trace = function(pos, color)
 {
 	var self = this;
 
@@ -42,7 +42,6 @@ global.common.Turtle.prototype.move = function()
 	var curr = this.code[this.nextIns ++];
 	var newPos = new global.common.Vector(0, 0);
 	newPos.add(this.position);
-
 	switch(curr.insId)
 	{
 		case global.config.codes['u'].id: // up
@@ -67,12 +66,12 @@ global.common.Turtle.prototype.move = function()
 			break;
 
 		case global.config.codes['c'].id: // set trace color
-			self.trColor = curr.params.color;
+			this.trColor = curr.params.color;
 			break;
 
 	}
 
-	this.path.push(new global.simulator.Trace(newPos, this.trColor));
+	this.path.push(new global.common.Trace(newPos, this.trColor));
 	this.position = newPos;
 
 	if(this.nextIns >= this.code.length)

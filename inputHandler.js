@@ -8,8 +8,8 @@ global.inputHandler.parse = function parse(codeStr)
 		{
 			if(codeStr[idx] >= '0' && codeStr[idx] <= '9')
 			{
-				args[params.length-1] *= 10; // example: 56 -> 560
-				args[params.length-1] += codeStr[idx] - '0'; // 560 -> 567
+				args[args.length-1] *= 10; // example: 56 -> 560
+				args[args.length-1] += codeStr[idx] - '0'; // 560 -> 567
 			}
 
 			if(codeStr[idx] == ',')
@@ -40,18 +40,19 @@ global.inputHandler.parse = function parse(codeStr)
 		return obj;
 	}
 
-	var output = []; // self explanatory
-	for(var idx in codeStr)
+	var output = [];
+	for(var idx = 0;idx < codeStr.length;idx ++)
 	{
-		if(codeStr[idx] == '{') {continue;}
+		if(global.config.codes[codeStr[idx]] == undefined) {continue;}
 
 		var arguments = undefined;
 		if(idx+1 < codeStr.length && codeStr[idx+1]=='{')
-			arguments = getArguments();
+			arguments = getArguments(idx+2);
 
 		output.push(
 			new global.common.Instruction(global.config.codes[codeStr[idx]].id, translateToObj(codeStr[idx], arguments))
 		);
+
 	}
 
 	return output;

@@ -4,12 +4,12 @@ function render()
 	context.clearRect(0, 0, global.renderer.canvas.width, global.renderer.canvas.height);
 
 	context.globalAlpha = 1;
-	context.fullStyle = "red";
+	context.fillStyle = "red";
 
 	for(var turt in global.simulator.turtles)
 	{
 		var currPath = global.simulator.turtles[turt].path;
-		
+
 		for(var idx in currPath)
 		{
 			if(idx > 0)

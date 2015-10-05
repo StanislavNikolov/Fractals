@@ -6,7 +6,7 @@ function simulate()
 	{
 		global.simulator.turtles[i].move();
 	}
-	console.log(global.simulator.turtles.length);
+	//console.log(global.simulator.turtles.length);
 }
 
 var simulateIntercval = setInterval(simulate, 1000/5);

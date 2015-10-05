@@ -1,0 +1,50 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Instruction	common.js	/^global.common.Instruction = function Instruction(insId, params)$/;"	f
+Turtle	common.js	/^global.common.Turtle = function Turtle(pos, code, trColor)$/;"	f
+global.common.Instruction	common.js	/^}$/;"	f
+global.common.Trace	common.js	/^}$/;"	f
+global.common.Turtle	common.js	/^}$/;"	c
+global.common.Turtle	common.js	/^}$/;"	f
+global.common.Turtle.move	common.js	/^global.common.Turtle.prototype.move = function()$/;"	m
+global.common.Vector	common.js	/^global.common.Vector = function(x, y)$/;"	f
+global.common.Vector	common.js	/^}$/;"	c
+global.common.Vector.add	common.js	/^global.common.Vector.prototype.add = function(v)$/;"	m
+global.config.codes.id	main.js	/^global.config.codes['c'] = {id:5, name:"Change_Trace_Color", randomMax:255};$/;"	p
+global.config.codes.id	main.js	/^global.config.codes['d'] = {id:1, name:"Go_Down", randomMax:10};$/;"	p
+global.config.codes.id	main.js	/^global.config.codes['l'] = {id:2, name:"Go_Left", randomMax:10};$/;"	p
+global.config.codes.id	main.js	/^global.config.codes['r'] = {id:3, name:"Go_Right", randomMax:10};$/;"	p
+global.config.codes.id	main.js	/^global.config.codes['s'] = {id:4, name:"Split", randomMax:0};$/;"	p
+global.config.codes.id	main.js	/^global.config.codes['u'] = {id:0, name:"Go_Up", randomMax:10};$/;"	p
+global.config.codes.name	main.js	/^global.config.codes['c'] = {id:5, name:"Change_Trace_Color", randomMax:255};$/;"	p
+global.config.codes.name	main.js	/^global.config.codes['d'] = {id:1, name:"Go_Down", randomMax:10};$/;"	p
+global.config.codes.name	main.js	/^global.config.codes['l'] = {id:2, name:"Go_Left", randomMax:10};$/;"	p
+global.config.codes.name	main.js	/^global.config.codes['r'] = {id:3, name:"Go_Right", randomMax:10};$/;"	p
+global.config.codes.name	main.js	/^global.config.codes['s'] = {id:4, name:"Split", randomMax:0};$/;"	p
+global.config.codes.name	main.js	/^global.config.codes['u'] = {id:0, name:"Go_Up", randomMax:10};$/;"	p
+global.config.codes.randomMax	main.js	/^global.config.codes['c'] = {id:5, name:"Change_Trace_Color", randomMax:255};$/;"	p
+global.config.codes.randomMax	main.js	/^global.config.codes['d'] = {id:1, name:"Go_Down", randomMax:10};$/;"	p
+global.config.codes.randomMax	main.js	/^global.config.codes['l'] = {id:2, name:"Go_Left", randomMax:10};$/;"	p
+global.config.codes.randomMax	main.js	/^global.config.codes['r'] = {id:3, name:"Go_Right", randomMax:10};$/;"	p
+global.config.codes.randomMax	main.js	/^global.config.codes['s'] = {id:4, name:"Split", randomMax:0};$/;"	p
+global.config.codes.randomMax	main.js	/^global.config.codes['u'] = {id:0, name:"Go_Up", randomMax:10};$/;"	p
+global.config.maxTurtles	main.js	/^global.config = {maxTurtles:200};$/;"	p
+global.inputHandler.parse	inputHandler.js	/^global.inputHandler.parse = function parse(codeStr)$/;"	f
+global.inputHandler.parse.getArguments	inputHandler.js	/^	function getArguments(startPos)$/;"	f
+global.inputHandler.parse.obj.jumpSize	inputHandler.js	/^			{$/;"	f
+global.inputHandler.parse.translateToObj	inputHandler.js	/^	function translateToObj(insChar, params)$/;"	f
+init	init.js	/^function init()$/;"	f
+init.genRandomInstructions	init.js	/^	function genRandomInstructions()$/;"	f
+obj.blue	inputHandler.js	/^				obj.green = function(){return Math.floor(Math.random() * 255)};$/;"	f
+obj.green	inputHandler.js	/^				obj.red = function(){return Math.floor(Math.random() * 255)};$/;"	f
+obj.red	inputHandler.js	/^			{$/;"	f
+parse	inputHandler.js	/^global.inputHandler.parse = function parse(codeStr)$/;"	f
+render	renderer.js	/^function render()$/;"	f
+renderInterval	renderer.js	/^var renderInterval = setInterval(render, 1000\/5);$/;"	v
+simulate	simulator.js	/^function simulate()$/;"	f
+simulateIntercval	simulator.js	/^var simulateIntercval = setInterval(simulate, 1000\/5);$/;"	v
+updateCanvasSize	main.js	/^function updateCanvasSize()$/;"	f

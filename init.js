@@ -21,11 +21,11 @@ function init()
 			{ bracketBalance ++; }
 		else if(codeStr[idx] == '}')
 			{ bracketBalance --; }
-		else if(global.config.codes[codeStr[idx]] == undefined && bracketBalance <= 0)
+		else if(global.config.codes[codeStr[idx]] === undefined && bracketBalance <= 0)
 			{ throw ("Unknown instruction " + codeStr[idx]); }
 	}
-	if(bracketBalance > 0) {throw "Too many braces."}
-	if(bracketBalance < 0) {throw "Not enough braces."}
+	if(bracketBalance > 0) {throw "Too many braces."; }
+	if(bracketBalance < 0) {throw "Not enough braces."; }
 
 	var vec = new global.common.Vector(200, 200); // Initial position
 	var ins = global.inputHandler.parse(codeStr); // Initial instructions

@@ -1,19 +1,39 @@
-global.inputHandler.parse = function parse(codeStr)
+global.inputHandler.parse = function (codeStr)
 {
 	function getArguments(startPos)
 	{
-		var args = [0];
+		var args = [];
+		var currentNumber = 0, multiplier = 1;
 
-		for(var idx = startPos;codeStr[idx] != '}';idx ++)
+		for(var idx = startPos+2;codeStr[idx] != '}';++ idx)
 		{
 			if(codeStr[idx] >= '0' && codeStr[idx] <= '9')
 			{
-				args[args.length-1] *= 10; // example: 56 -> 560
-				args[args.length-1] += codeStr[idx] - '0'; // 560 -> 567
+				currentNumber *= 10; // example: 56 -> 560
+				currentNumber += codeStr[idx] - '0'; // 560 -> 567
+			}
+			if(codeStr[idx] == '-')
+			{
+				if(currentNumber == 0)
+					multiplier = -1;
+				else
+					throw "Invalid use of \'-\'";
+			}
+			if(codeStr[idx] == '?')
+			{
+				args.push(
+					function(){return Math.floor(Math.random()*
+					(currentNumber==0?global.config.codes[codeStr[startPos]].randomMax:currentNumber));
+				});
 			}
 
-			if(codeStr[idx] == ',')
-				args.push(0); // go to next argument/parameter
+			if((codeStr[idx] == ',' || codeStr[idx+1] == '}') && codeStr[idx-1] != '?')
+			{
+				// go to next argument
+				args.push(function(){return currentNumber * multiplier;});
+				currentNumber = 0;
+				multiplier = 1;
+			}
 		}
 
 		return args;
@@ -23,34 +43,49 @@ global.inputHandler.parse = function parse(codeStr)
 	{
 		var obj = {};
 
-		if(params == undefined)
+		if(params === null)
 		{
 			if(insChar == 'u' || insChar == 'd' || insChar == 'l' || insChar == 'r')
-				obj.jumpSize = 10;
+				obj.jumpSize = function(){return 10;};
+
+			if(insChar == 'c')
+			{
+				obj.red = function(){return Math.floor(Math.random() * 255)};
+				obj.green = function(){return Math.floor(Math.random() * 255)};
+				obj.blue = function(){return Math.floor(Math.random() * 255)};
+			}
 		}
 		else
 		{
-			switch(insChar)
+			if(insChar == 'c')
 			{
-				case 'c':
-					obj.color = "rgb(" + params[0] + "," + params[1] + "," + params[2] + ")";
-					break;
+				obj.red = params[0];
+				obj.green = params[1];
+				obj.blue = params[2];
+			}
+			if(insChar == 'u' || insChar == 'd' || insChar == 'l' || insChar == 'r')
+			{
+				obj.jumpSize = params[0];
 			}
 		}
 		return obj;
 	}
 
 	var output = [];
-	for(var idx = 0;idx < codeStr.length;idx ++)
+	var bracketBalance = 0;
+	for(var idx = 0;idx < codeStr.length;++ idx)
 	{
-		if(global.config.codes[codeStr[idx]] == undefined) {continue;}
+		if(codeStr[idx] == '{') {bracketBalance ++; continue;}
+		if(codeStr[idx] == '}') {bracketBalance --; continue;}
+		if(bracketBalance != 0) {continue;}
 
-		var arguments = undefined;
+		var instructionArgs = null;
 		if(idx+1 < codeStr.length && codeStr[idx+1]=='{')
-			arguments = getArguments(idx+2);
+			instructionArgs = getArguments(idx);
 
 		output.push(
-			new global.common.Instruction(global.config.codes[codeStr[idx]].id, translateToObj(codeStr[idx], arguments))
+			new global.common.Instruction(global.config.codes[codeStr[idx]].id,
+			translateToObj(codeStr[idx], instructionArgs))
 		);
 
 	}
